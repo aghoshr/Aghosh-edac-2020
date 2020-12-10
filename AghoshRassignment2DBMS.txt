@@ -1,0 +1,117 @@
+create database assign2;
+use assign2;
+
+create table Publisher
+(pname varchar(30),phone integer,email varchar(30));
+
+create TABLE Authors(
+aname varchar (30),phone integer);
+
+create table Titles
+(titleid integer,title varchar (30),pubdate date);
+
+create table titleauthors(auid integer,titleid integer);
+
+create table Subjects(subname varchar(30),subid varchar(30));
+
+alter table titleauthors add column importance integer;
+alter table Titles add column price integer; 
+
+desc Titles;
+insert into Titles values(10001,'data structures','2020/02/03',350);
+insert into Titles values(10002,'A Tale of Two Cities','2020/01/15',300);
+insert into Titles values(10003,'half girfriend','2020/05/02',700);
+insert into Titles values(10004,'sahil ka prem','2020/06/04',400);
+insert into Titles values(10005,'love for life','2020/09/08',550);
+insert into Titles values(1006,'java','2020/10/23',200);
+insert into Titles values(1007,'oracle','2020/11/21',643);
+
+-- truncate table Titles;
+insert into Subjects values('java','jee');
+insert into Subjects values('.net','net');
+insert into Subjects values('mastiJava','mj');
+insert into Subjects values('Ashwini','ash');
+insert into Subjects values('oracle','ok');
+-- truncate table Subjects;
+
+insert into Authors values('sahil',85643212);
+insert into Authors values('Ashwini',85643322);
+insert into Authors values('Aghosh',83456378);
+insert into Authors values('Aashay',76656453);
+insert into Authors values('jennifer',8765643);
+
+
+
+insert into publisher value('aghill',9876654,'aghosh@gmail.com');
+insert into publisher value('sahil',98776764,'sahil@gmail.com');
+insert into publisher value('ashwini',9876654,'ashwini@gmail.com');
+insert into publisher value('aashay',9425654,'aashay@gmail.com');
+insert into publisher value('lovely',9339054,'peelu@gmail.com');
+insert into publisher value('techmedia',9339854,'tech@gmail.com');
+insert into publisher value('wrox',933334,'wr@gmail.com');
+
+insert into titleauthors value(1001,22,1);
+insert into titleauthors value(1002,23,4);
+insert into titleauthors value(1003,24,3);
+insert into titleauthors value(1004,26,5);
+insert into titleauthors value(1005,2345,6);
+
+select title from Titles where price <500;
+select subname from Subjects where subid='jee' or subid='java';
+select * from Titles where titleid=101 or price >400; 
+
+select subname from Subjects where subname='oracle';
+select subname from subjects where subname like 'j%';
+select subname from Subjects where subname='.net';
+
+select aname from Authors where aname like '%er';
+select pname from publisher where pname like '%hill';
+
+select * from publisher where pname='techmedia' or pname='wrox';
+select max(price) from titles;
+
+select avg(importance) from titleauthors;
+select sum(price) from titles;
+select sum(price),avg(price) from titles;
+select count(*) from authors;
+
+select title from titles where month(pubdate)=4;
+select year(sysdate())as year;
+select month(sysdate()) as month;
+-- select day(0003-04-05) as DayOfMonth from title='java';
+
+create table employee (empid integer,empname char(50));
+alter table employee add column deptid integer;
+alter table employee modify empname varchar(50);
+ 
+rename table employee to scott;
+
+truncate table scott;
+
+select round(10000.545,2);
+select truncate(10000.545,2); -- both work same
+select ceil (10000.678);  -- it actually rounds up the decimal value
+select floor(10000.768); -- ignores the decimals
+
+select sign(15);
+select mod(45,4);
+select sqrt(4);
+select power(5,2);
+
+select char_length('CDAC juhu') as char_length;
+select concat('CDAC juhu',' Mumbai');
+select insert('Welcome',1,5,"edac juhu");
+select ucase('cdac Mumbai');
+select lcase('cDac MuMbaI');
+select reverse('dac Mumbai');
+-- select replace('dac mumbai' to 'cadc');
+select trim('cdacmumbai   ');
+select space('cdac mumbai');
+
+select sysdate();
+select current_date();
+select current_date()+1;
+select curdate()+0;
+select current_time();
+select curtime();
+select monthname('2020/04/05');
