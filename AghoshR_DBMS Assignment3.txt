@@ -1,0 +1,37 @@
+create database assignment3;
+use assignment3;
+
+
+create table employee(empid integer(2) primary key auto_increment,emp_name varchar(10),
+dept_id integer(5),sal integer(4),manager integer(2),
+foreign key(dept_id) references department(dept_id));
+
+create table department(dept_id integer primary key,dept_name varchar(50));
+
+desc employee;
+desc department;
+
+insert into employee(emp_name,dept_id,sal,manager) values("Arun",1,8000,4);
+insert into employee(emp_name,dept_id,sal,manager) values("Kiran",2,7000,1);
+insert into employee(emp_name,dept_id,sal,manager) values("Scott",3,3000,1);
+insert into employee(emp_name,dept_id,sal,manager) values("Max",2,9000,null);
+insert into employee(emp_name,dept_id,sal,manager) values("Jack",2,8000,4);
+insert into employee(emp_name,dept_id,sal,manager) values("King",null,6000,1);
+truncate employee;
+select * from employee;
+insert into department values(1,"Finance");
+insert into department values(2,"Training");
+insert into department values(3,"Markrting");
+
+select * from department;
+
+use assign2;
+
+select * from Authors order by aname;
+select * from Publisher order by pname desc;
+
+select sum(sal), dept_id from employee group by dept_id;
+select sum(sal), dept_id from employee where sal>17000 group by dept_id;
+
+select sum(sal),dept_id from employee group by dept_id having sum(sal)>18000;
+select sum(sal),dept_id from employee group by dept_id having sum(sal)<20000;
